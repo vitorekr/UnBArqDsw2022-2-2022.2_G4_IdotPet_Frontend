@@ -16,10 +16,9 @@ class AppRoutes {
       name: _splash,
       page: () => const LoginPage(),
     ),
-    
   ];
 
-  static String homePath() => '/';
+  static String homePath() => _home;
   static String loginPath() => _login;
   static String splashPath() => _splash;
 }
