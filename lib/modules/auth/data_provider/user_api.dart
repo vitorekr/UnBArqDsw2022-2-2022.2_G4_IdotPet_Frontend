@@ -4,15 +4,19 @@ import 'package:idotpet/modules/auth/entities/user.dart';
 
 class UserApi implements IUserApi {
   @override
-  Future<void> userLogin() async {
+  Future<bool> userLogin(String username, String password) async {
     final Dio dio = Dio();
     var formData = FormData.fromMap({
-        'username': 'user@example.com',
-        'password': 'string'
+        'username': username,
+        'password': password
     });
     // var params = {"username": "user@example.com", "password": "string"};
-    await dio.post('http://192.168.0.184:8000/user/login', data: formData);
-
+    final result = await dio.post('http://192.168.0.184:8000/user/login', data: formData);
+    if(result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override

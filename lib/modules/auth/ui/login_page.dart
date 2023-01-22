@@ -13,8 +13,8 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(title: const Text("Login Page")),
       body: TextButton(
         onPressed: () async {
-          await userApi.userLogin();
-          await userApi.getUser();
+          // await userApi.userLogin();
+          // await userApi.getUser();
           Get.offNamed(AppRoutes.homePath());
         }, 
         child: const Text('requisição')
