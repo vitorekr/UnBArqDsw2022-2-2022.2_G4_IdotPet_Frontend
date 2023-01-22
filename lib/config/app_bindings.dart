@@ -12,6 +12,5 @@ class AppBindings extends Bindings {
     Get.put<IUserApi>(UserApi());
     Get.put<UserController>(UserController());
     Get.put<SessionController>(SessionController());
-
   }
 }
