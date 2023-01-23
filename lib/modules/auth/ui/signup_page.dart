@@ -168,6 +168,15 @@ class SignUpPage extends StatelessWidget {
               fontSize:25,
               ),
             ),
+            const Text('Criar conta',
+              style: TextStyle(
+              color: Colors.white,
+              fontSize:25,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             buildName(),
             const SizedBox(
               height: 10,
@@ -179,7 +188,37 @@ class SignUpPage extends StatelessWidget {
             buildPassword(),
             const SizedBox(
               height: 10,
-            )
+            ),
+
+            Container(
+              height: 70,
+              alignment: Alignment.center,
+              // ignore: prefer_const_constructors
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255,255,139,106),
+               borderRadius: const BorderRadius.all(
+                Radius.circular(30)
+               )
+
+              ),
+
+              child: SizedBox.expand(
+                child: TextButton(
+                    child: 
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          const Text('CRIAR NOVA CONTA',
+                            style: TextStyle(color: Colors.white,
+                            fontSize: 20,
+                            ),
+                          ),
+                        ]),
+                    onPressed: () => {},
+                ),
+              ),
+            ),
         ]),
       ),
     ]),
