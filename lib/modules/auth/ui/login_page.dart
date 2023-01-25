@@ -10,13 +10,97 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userApi = UserApi();
     return Scaffold(
-      appBar: AppBar(title: const Text("Login Page")),
-      body: TextButton(
-        onPressed: () async {
-          Get.offNamed(AppRoutes.signupPath());
-        }, 
-        child: const Text('requisição')
+      body: ListView(children: [
+      Container(  
+        height: MediaQuery.of(context).size.height/1.9999,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/father_dog2.png"),
+              fit: BoxFit.cover),
+        ),
       ),
+      Container(
+          height: MediaQuery.of(context).size.height,
+          color: const Color.fromRGBO(38, 217, 224, 1),  
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.only(
+          top : 15,
+          left: 20,
+          right: 20,
+        ),
+          // ignore: prefer_const_literals_to_create_immutables
+          child: ListView(children: [   
+            const Text('Frase de efeito',
+              style: TextStyle(
+              color: Colors.white,
+              fontSize:25,
+              fontWeight: FontWeight.bold,
+              
+              ),
+            ),
+
+            const SizedBox(
+              height:15
+              
+            ), 
+      
+            const Text('Login',
+              style: TextStyle(
+              color: Colors.white,
+              fontSize:22,
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            //buildEmail(),
+            const SizedBox(
+              height: 20,
+            ),
+           // buildPassword(),
+            const SizedBox(
+              height: 25,
+            ),
+            Container(
+              height: 70,
+              alignment: Alignment.center,
+              // ignore: prefer_const_constructors
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(109, 111, 200, 1),
+                borderRadius: const BorderRadius.all(
+                Radius.circular(30)
+               )
+
+
+              ),
+              
+              child: SizedBox.expand(
+               
+                child: TextButton(
+                   
+                    child: 
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          const Text('ENTRAR',
+                            style: TextStyle(color: Colors.white,
+                            fontSize: 20,
+                        
+                    
+                            ),
+                          ),
+                        ]),
+                    onPressed: () => {},
+                ),
+              ),
+            ),
+        ]),
+      ),
+    ]),
+    
     );
   }
 
