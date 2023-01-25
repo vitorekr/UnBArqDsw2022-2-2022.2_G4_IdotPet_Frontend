@@ -19,7 +19,7 @@ Widget buildEmail(){
                 const BoxShadow(
                   color: Color.fromRGBO(109, 111, 200, 1),
                   blurRadius: 4,
-                  offset: Offset(0,8),
+                  offset: Offset(0,4),
                   
                 )
               ]
@@ -47,6 +47,49 @@ Widget buildEmail(){
     ],
   );
 }
+Widget buildPassword(){
+  return Column(
+    children: <Widget>[
+      Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.only(
+                left: 20,
+              ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              // ignore: prefer_const_literals_to_create_immutables
+              boxShadow: [
+                const BoxShadow(
+                  color: Color.fromRGBO(109, 111, 200, 1),
+                  blurRadius: 4,
+                  offset: Offset(0,4),
+                )
+              ]
+            ),
+            height: 60,
+            child: const TextField(
+                  obscureText: true,
+                  style: TextStyle(
+                    color: Colors.black38,
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(top:14),
+                    border: InputBorder.none,
+                    icon: Icon(Icons.lock),
+                    labelText: 'Senha',
+                    labelStyle: TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                  ),
+                ),
+           ),
+        ),
+    ],
+  );
+}
+
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -86,7 +129,7 @@ class LoginPage extends StatelessWidget {
             ),
 
             const SizedBox(
-              height:15
+              height:25
               
             ), 
       
@@ -103,7 +146,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-           // buildPassword(),
+            buildPassword(),
             const SizedBox(
               height: 25,
             ),
