@@ -161,9 +161,9 @@ class LoginPage extends StatelessWidget {
                           const Text(
                             'ENTRAR',
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                           ),
                         ]),
                     onPressed: () => {},
