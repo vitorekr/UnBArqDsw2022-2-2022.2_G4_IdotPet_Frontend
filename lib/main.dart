@@ -8,7 +8,7 @@ void main() {
       title: 'IDotPet',
       debugShowCheckedModeBanner: false,
       getPages: AppRoutes.pages,
-      initialRoute: AppRoutes.loginPath(),
+      initialRoute: AppRoutes.signupPath(),
     )
   );
 }

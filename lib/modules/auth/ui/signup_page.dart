@@ -147,7 +147,7 @@ class SignUpPage extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/mother_cat2.png"),
+              image: AssetImage("assets/images/mother_cat2.png"),
               fit: BoxFit.cover),
         ),
       ),

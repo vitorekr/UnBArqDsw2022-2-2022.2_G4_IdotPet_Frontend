@@ -102,7 +102,7 @@ class LoginPage extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/father_dog2.png"), fit: BoxFit.cover),
+                image: AssetImage("assets/images/father_dog2.png"), fit: BoxFit.cover),
           ),
         ),
         Container(
