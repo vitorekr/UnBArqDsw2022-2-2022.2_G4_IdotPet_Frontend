@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:idotpet/config/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -34,7 +36,7 @@ class _SplashPageState extends State<SplashPage> {
     //   await authController.refreshToken().then((value) =>
     //       Get.offNamed(AppRoutes.homePath()));
     // } else {
-    //   Get.offNamed(AppRoutes.loginPath());
+    Get.offNamed(AppRoutes.loginPath());
     // }
   }
 }

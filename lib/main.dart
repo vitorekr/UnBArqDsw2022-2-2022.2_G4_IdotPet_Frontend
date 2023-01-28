@@ -10,6 +10,5 @@ void main() {
       getPages: AppRoutes.pages,
       initialRoute: AppRoutes.loginPath(),
     )
-
   );
 }

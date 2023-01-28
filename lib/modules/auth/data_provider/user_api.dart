@@ -3,24 +3,32 @@ import 'package:idotpet/modules/auth/data_provider/iuser_api.dart';
 import 'package:idotpet/modules/auth/entities/user.dart';
 
 class UserApi implements IUserApi {
+  late dynamic _token;
+  dynamic get token => _token;
+  
   @override
-  Future<void> userLogin() async {
+  Future<bool> userLogin(String username, String password) async {
     final Dio dio = Dio();
     var formData = FormData.fromMap({
-        'username': 'user@example.com',
-        'password': 'string'
+        'username': username,
+        'password': password
     });
     // var params = {"username": "user@example.com", "password": "string"};
-    await dio.post('http://192.168.0.184:8000/user/login', data: formData);
-
+    final result = await dio.post('http://192.168.0.184:8000/user/login', data: formData);
+    _token = result.data;
+    if(result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
   Future<User> getUser() async {
     final Dio dio = Dio();
-    final json = await dio.get('http://192.168.0.184:8000/user/1',
+    final json = await dio.get('http://192.168.0.184:8000/user/logged',
       options: Options(headers: {
-        'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzQ3ODI2NDAsInN1YiI6IjEiLCJpYXQiOjE2NzQxNzc4NDAsImlzcyI6Iklkb3RQZXQifQ.4U6RNbfb27uAE1sPtAx4KFr89WjcWHfoL0T7Fl-4UWk' 
+        'Authorization': _token["token_type"] + ' ' + _token["access_token"]
       }));
     // final maps = jsonDecode(json.data);
     final user = User.fromMap(json.data);
