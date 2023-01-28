@@ -14,12 +14,12 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Login Page")),
       body: TextButton(
-        onPressed: () async {
-          Get.offNamed(AppRoutes.signupPath());
-        }, 
-        child: const Text('requisição')
-      ),
+          onPressed: () async {
+            /* await userApi.userLogin();
+          await userApi.getUser(); */
+            Get.offNamed(AppRoutes.homePath());
+          },
+          child: const Text('requisição')),
     );
   }
-
 }

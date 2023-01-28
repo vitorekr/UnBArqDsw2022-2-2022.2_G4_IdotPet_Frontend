@@ -32,10 +32,9 @@ class AppRoutes {
       name: _signup,
       page: () => const SignUpPage(),
     ),
-    
   ];
 
-  static String homePath() => '/';
+  static String homePath() => _home;
   static String loginPath() => _login;
   static String signupPath() => _signup;
   static String splashPath() => _splash;
