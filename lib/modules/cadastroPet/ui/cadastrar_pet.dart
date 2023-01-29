@@ -6,10 +6,15 @@ import '../../home/ui/navbar.dart';
 import 'caixa_selecao.dart';
 
 Widget buildPhotoUpload() {
-  return Container(
-    height: 200,
-    width: double.infinity,
-    color: const Color.fromRGBO(212, 212, 212, 1),
+  return GestureDetector(
+    onTap: () {
+      print("Tapped");
+    },
+    child: Container(
+      height: 200,
+      width: double.infinity,
+      color: const Color.fromRGBO(212, 212, 212, 1),
+    ),
   );
 }
 
