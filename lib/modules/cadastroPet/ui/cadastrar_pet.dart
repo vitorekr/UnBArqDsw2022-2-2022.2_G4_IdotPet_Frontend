@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/auth/data_provider/user_api.dart';
@@ -11,9 +12,20 @@ Widget buildPhotoUpload() {
       print("Tapped");
     },
     child: Container(
-      height: 200,
       width: double.infinity,
+      height: 200,
       color: const Color.fromRGBO(212, 212, 212, 1),
+      alignment: Alignment.center,
+      child: DottedBorder(
+        color: Colors.black,
+        strokeWidth: 1,
+        dashPattern: [8,3],
+        child: Container(
+          width: 380,
+          height: 170,
+          color: const Color.fromRGBO(212, 212, 212, 1),
+        ),
+      ),
     ),
   );
 }
