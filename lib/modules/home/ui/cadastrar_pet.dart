@@ -26,20 +26,23 @@ Widget buildName(){
               ]
             ),
             height: 60,
-            child: const TextField(
+            child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
+                  // ignore: prefer_const_constructors
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black,
+                    fontSize: 23
                   ),
+                  // ignore: prefer_const_constructors
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top:14),
+                    contentPadding: const EdgeInsets.only(bottom:10),
                     border: InputBorder.none,
                     labelText: 'Ex.: Snoopy',
                     floatingLabelBehavior: FloatingLabelBehavior.never,
-                    labelStyle: TextStyle(
-                    color: Colors.black38,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    labelStyle: const TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
                   ),
                 ),
            ),
@@ -69,17 +72,20 @@ Widget buildSize(){
               ]
             ),
             height: 60,
-            child: const TextField(
+            child:  TextFormField(
                   keyboardType: TextInputType.emailAddress, // E ESSE EMAILADRESS PRA TODO LADO?
-                  style: TextStyle(
-                    color: Colors.black38,
+                  style: const TextStyle(                   // eh só arrumar
+                    color: Colors.black,
+                    fontSize: 25
                   ),
+                  // ignore: prefer_const_constructors
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top:14),
+                    contentPadding: const EdgeInsets.only(bottom:10),
+
                     border: InputBorder.none,
                     labelText: 'Ex.: Médio',
                     floatingLabelBehavior: FloatingLabelBehavior.never,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
                     fontSize: 20,
@@ -115,12 +121,13 @@ Widget buildVaccines(){
             child: const TextField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black,
+                    fontSize: 23
                   ),
                   maxLines: 5,
                   minLines: 1,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top:30),
+                    contentPadding: EdgeInsets.only(bottom:30),
                     border: InputBorder.none,
                     labelText: 'Descreva quais vacinas o animal já tomou. \n\nEx.: 4 V8s, 2 de Giardia, 1 de Raiva.',
                     floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -162,7 +169,8 @@ Widget buildDescription(){
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black,
+                    fontSize: 20
                   ),
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -204,10 +212,11 @@ Widget buildCEP(){
             child: const TextField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Colors.black,
+                    fontSize: 23
                   ),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top:14),
+                    contentPadding: EdgeInsets.only(bottom:10),
                     border: InputBorder.none,
                     labelStyle: TextStyle(
                     color: Colors.black38,
@@ -229,6 +238,7 @@ class CadastrarPet extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(233, 0, 84, 1),
         title: const Text('Inserir anúncio'),
