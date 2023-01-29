@@ -5,6 +5,14 @@ import 'package:idotpet/modules/auth/data_provider/user_api.dart';
 import '../../home/ui/navbar.dart';
 import 'caixa_selecao.dart';
 
+Widget buildPhotoUpload() {
+  return Container(
+    height: 200,
+    width: double.infinity,
+    color: const Color.fromRGBO(212, 212, 212, 1),
+  );
+}
+
 Widget buildName(){
   return Column(
     children: <Widget>[
@@ -244,70 +252,107 @@ class CadastrarPet extends StatelessWidget {
         title: const Text('Inserir anúncio'),
         centerTitle: true,
       ),
-      body: Column(children:[
-          const Text('Nome do pet*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
+      body: 
+        SingleChildScrollView(
+          child: Column(
+            children:[
+            buildPhotoUpload(),
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          buildName(),
-          const SizedBox(
-            height: 10,
-          ),
+            const Text('Nome do pet*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            buildName(),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text('Espécie*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            const DropdownButtonEspecie(),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text('Porte*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            buildSize(),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text('Vacinas*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            buildVaccines(),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text('CEP*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            buildCEP(),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text('Descrição*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            buildDescription(),
+            const SizedBox(
+              height: 20,
+            ),
+            UnconstrainedBox(
+                child: Container(
+                  height: 70,
+                  width: 220,
+                  alignment: Alignment.center,
+                  // ignore: prefer_const_constructors
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(233, 0, 84, 1),
+                      borderRadius: const BorderRadius.all(Radius.circular(30))),
 
-          const Text('Espécie*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          const DropdownButtonEspecie(),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text('Porte*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          buildSize(),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text('Vacinas*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          buildVaccines(),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text('CEP*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          buildCEP(),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text('Descrição*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          buildDescription(),
+                  child: SizedBox.expand(
+                    child: TextButton(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
 
-          
-        ]
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: <Widget>[
+                            const Text(
+                              'Enviar anúncio',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ]),
+                      onPressed: () => {},
+                    ),
+                  ),
+                ),
+              )
+          ]
+        ),
       ),
-      
       bottomNavigationBar: const BottomNavBar(),
 
     );
