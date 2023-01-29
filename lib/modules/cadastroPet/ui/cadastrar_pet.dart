@@ -13,7 +13,7 @@ Widget buildPhotoUpload() {
     },
     child: Container(
       width: double.infinity,
-      height: 200,
+      height: 230,
       color: const Color.fromRGBO(212, 212, 212, 1),
       alignment: Alignment.center,
       child: DottedBorder(
@@ -22,8 +22,29 @@ Widget buildPhotoUpload() {
         dashPattern: [8,3],
         child: Container(
           width: 380,
-          height: 170,
+          height: 190,
           color: const Color.fromRGBO(212, 212, 212, 1),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Icon(Icons.add_a_photo_outlined,
+                    color: Color.fromRGBO(233, 0, 84, 1),
+                    size: 50),
+              Text("Incluir fotos",
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Color.fromRGBO(233, 0, 84, 1),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text("0 de 6 adicionadas",
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ]
+          ),
         ),
       ),
     ),
@@ -272,10 +293,12 @@ class CadastrarPet extends StatelessWidget {
       body: 
         SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children:[
             buildPhotoUpload(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('Nome do pet*',
               textAlign: TextAlign.left,
@@ -283,9 +306,12 @@ class CadastrarPet extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             buildName(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('Espécie*',
               textAlign: TextAlign.left,
@@ -293,9 +319,12 @@ class CadastrarPet extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             const DropdownButtonEspecie(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('Porte*',
               textAlign: TextAlign.left,
@@ -303,9 +332,12 @@ class CadastrarPet extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             buildSize(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('Vacinas*',
               textAlign: TextAlign.left,
@@ -313,9 +345,12 @@ class CadastrarPet extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             buildVaccines(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('CEP*',
               textAlign: TextAlign.left,
@@ -323,15 +358,21 @@ class CadastrarPet extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
             buildCEP(),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             const Text('Descrição*',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 20,
               ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             buildDescription(),
             const SizedBox(
