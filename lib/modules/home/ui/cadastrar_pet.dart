@@ -111,7 +111,7 @@ Widget buildVaccines(){
                 )
               ]
             ),
-            height: 60,
+            height: 80,
             child: const TextField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
@@ -142,6 +142,7 @@ Widget buildDescription(){
     children: <Widget>[
       Container(
             alignment: Alignment.center,
+            height: 120,
             padding: const EdgeInsets.only(
                 left: 20,
               ),
@@ -157,7 +158,6 @@ Widget buildDescription(){
                 )
               ]
             ),
-            height: 60,
             child: const TextField(
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
@@ -242,6 +242,9 @@ class CadastrarPet extends StatelessWidget {
             ),
           ),
           buildName(),
+          const SizedBox(
+            height: 10,
+          ),
 
           const Text('Espécie*',
             textAlign: TextAlign.left,
@@ -250,7 +253,9 @@ class CadastrarPet extends StatelessWidget {
             ),
           ),
           const DropdownButtonEspecie(),
-
+          const SizedBox(
+            height: 10,
+          ),
           const Text('Porte*',
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -258,7 +263,9 @@ class CadastrarPet extends StatelessWidget {
             ),
           ),
           buildSize(),
-
+          const SizedBox(
+            height: 10,
+          ),
           const Text('Vacinas*',
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -266,7 +273,19 @@ class CadastrarPet extends StatelessWidget {
             ),
           ),
           buildVaccines(),
-
+          const SizedBox(
+            height: 10,
+          ),
+          const Text('CEP*',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          buildCEP(),
+          const SizedBox(
+            height: 10,
+          ),
           const Text('Descrição*',
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -275,13 +294,7 @@ class CadastrarPet extends StatelessWidget {
           ),
           buildDescription(),
 
-          const Text('CEP*',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          buildCEP(),
+          
         ]
       ),
       
