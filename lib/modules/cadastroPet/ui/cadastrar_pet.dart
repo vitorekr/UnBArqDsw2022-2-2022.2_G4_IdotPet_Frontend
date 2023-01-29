@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/auth/data_provider/user_api.dart';
-import 'navbar.dart';
+import '../../home/ui/navbar.dart';
 import 'caixa_selecao.dart';
 
 Widget buildName(){

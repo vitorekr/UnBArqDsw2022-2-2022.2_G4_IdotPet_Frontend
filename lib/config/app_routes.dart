@@ -3,7 +3,7 @@ import 'package:idotpet/config/app_bindings.dart';
 import 'package:idotpet/modules/auth/ui/login_page.dart';
 import 'package:idotpet/modules/auth/ui/signup_page.dart';
 import 'package:idotpet/modules/home/ui/home_page.dart';
-import 'package:idotpet/modules/home/ui/cadastrar_pet.dart';
+import 'package:idotpet/modules/cadastroPet/ui/cadastrar_pet.dart';
 import 'package:idotpet/modules/splash/ui/splash_page.dart';
 
 class AppRoutes {
