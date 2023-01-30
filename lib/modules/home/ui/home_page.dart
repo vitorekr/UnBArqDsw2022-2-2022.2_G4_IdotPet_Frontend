@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/home/ui/card.dart';
+import 'package:idotpet/modules/home/ui/card/card2.dart';
+import 'package:idotpet/modules/home/ui/card/card3.dart';
+import 'package:idotpet/modules/home/ui/card/card4.dart';
 import 'package:idotpet/modules/home/ui/filter_button.dart';
 import 'package:idotpet/modules/home/ui/search_field.dart';
 
@@ -101,7 +104,15 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 22),
             const Center(
-              child: PetCard(),
+              child: PetCard2(),
+            ),
+            const SizedBox(height: 22),
+            const Center(
+              child: PetCard3(),
+            ),
+            const SizedBox(height: 22),
+            const Center(
+              child: PetCard4(),
             ),
           ],
         ),
