@@ -3,12 +3,12 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Uphoto extends StatefulWidget {
+class UploadPhotoWidget extends StatefulWidget {
   @override
-  State<Uphoto> createState() => _UploadPhoto();
+  State<UploadPhotoWidget> createState() => _UploadPhoto();
 }
 
-class _UploadPhoto extends State<Uphoto> {
+class _UploadPhoto extends State<UploadPhotoWidget> {
 
   final ImagePicker imagePicker = ImagePicker();
       List<XFile>? imageFileList = [];

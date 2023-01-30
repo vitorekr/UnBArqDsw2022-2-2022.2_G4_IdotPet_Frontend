@@ -255,7 +255,7 @@ class CadastrarPet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[
-            Uphoto(),
+            UploadPhotoWidget(),
             const SizedBox(
               height: 15,
             ),
