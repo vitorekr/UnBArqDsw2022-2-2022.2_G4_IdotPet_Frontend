@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
-import 'package:idotpet/modules/auth/data_provider/user_api.dart';
+import 'package:idotpet/modules/cadastroPet/controllers/pet_controller.dart';
 import '../../home/ui/navbar.dart';
 import 'select_species.dart';
 
@@ -288,7 +288,7 @@ class CadastrarPet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final petController = Get.find<PetController>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -437,18 +437,25 @@ class CadastrarPet extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
 
-                            // ignore: prefer_const_literals_to_create_immutables
-                            children: <Widget>[
-                              const Text(
-                                'Enviar anúncio',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ]),
-                        onPressed: () => {},
-                      ),
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: <Widget>[
+                            const Text(
+                              'Enviar anúncio',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ]),
+                      onPressed: () async {
+                        final pets = await petController.getPet();
+                        final isCreated = await petController.createPet("joao", "specieName", "breedName", "size", "m", "vaccine");
+                        if(isCreated) {
+                          Get.offNamed(AppRoutes.homePath());
+                        } else {
+                          print("erro");
+                        }
+                      },
                     ),
                   ),
                 ),

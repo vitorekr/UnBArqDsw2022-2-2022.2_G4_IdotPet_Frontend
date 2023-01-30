@@ -3,14 +3,21 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:idotpet/modules/auth/data_provider/iuser_api.dart';
 import 'package:idotpet/modules/auth/entities/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserApi implements IUserApi {
   late dynamic _token;
   dynamic get token => _token;
+
+  @override
+  dynamic getToken() => _token;
   
   @override
   Future<bool> userLogin(String username, String password) async {
     final Dio dio = Dio();
+
+    var prefs = await SharedPreferences.getInstance();
+
     var formData = FormData.fromMap({
         'username': username,
         'password': password
@@ -18,6 +25,8 @@ class UserApi implements IUserApi {
     // var params = {"username": "user@example.com", "password": "string"};
     final result = await dio.post('http://192.168.0.184:8000/user/login', data: formData);
     _token = result.data;
+    prefs.setString('token', _token['access_token']);
+    print(_token);
     if(result.statusCode == 200) {
       return true;
     } else {
@@ -64,7 +73,5 @@ class UserApi implements IUserApi {
       print(e.error);
       return false;
     }
-
-    
   }
 }
