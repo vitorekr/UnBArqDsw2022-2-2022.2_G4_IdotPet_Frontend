@@ -145,7 +145,7 @@ class LoginPage extends StatelessWidget {
             ),
             UnconstrainedBox(
               child: Container(
-                height: 70,
+                height: 40,
                 width: 220,
                 alignment: Alignment.center,
                 // ignore: prefer_const_constructors
@@ -162,6 +162,39 @@ class LoginPage extends StatelessWidget {
                         children: <Widget>[
                           const Text(
                             'ENTRAR',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]),
+                    onPressed: () => {},
+                  ),
+                ),
+              ),
+            ),
+             const SizedBox(
+              height: 20,
+            ),
+            UnconstrainedBox(
+              child: Container(
+                height: 40,
+                width: 220,
+                alignment: Alignment.center,
+                // ignore: prefer_const_constructors
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(109, 111, 200, 1),
+                    borderRadius: const BorderRadius.all(Radius.circular(30))),
+
+                child: SizedBox.expand(
+                  child: TextButton(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: <Widget>[
+                          const Text(
+                            'CADASTRAR',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
