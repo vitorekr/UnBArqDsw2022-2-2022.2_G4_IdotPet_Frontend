@@ -1,55 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:idotpet/modules/cadastroPet/ui/select_gender.dart';
+import 'package:idotpet/modules/cadastroPet/ui/upload_images.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/cadastroPet/controllers/pet_controller.dart';
 import '../../home/ui/navbar.dart';
-import 'caixa_selecao.dart';
+import 'select_species.dart';
 
-Widget buildPhotoUpload() {
-  return GestureDetector(
-    onTap: () {
-      print("Tapped");
-    },
-    child: Container(
-      width: double.infinity,
-      height: 230,
-      color: const Color.fromRGBO(212, 212, 212, 1),
-      alignment: Alignment.center,
-      child: DottedBorder(
-        color: Colors.black,
-        strokeWidth: 1,
-        dashPattern: [8,3],
-        child: Container(
-          width: 380,
-          height: 190,
-          color: const Color.fromRGBO(212, 212, 212, 1),
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Icon(Icons.add_a_photo_outlined,
-                    color: Color.fromRGBO(233, 0, 84, 1),
-                    size: 50),
-              Text("Incluir fotos",
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Color.fromRGBO(233, 0, 84, 1),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text("0 de 6 adicionadas",
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-            ]
-          ),
-        ),
-      ),
-    ),
-  );
-}
 
 Widget buildName(){
   return Column(
@@ -73,7 +33,7 @@ Widget buildName(){
             ),
             height: 60,
             child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.name,
                   // ignore: prefer_const_constructors
                   style: TextStyle(
                     color: Colors.black,
@@ -89,6 +49,52 @@ Widget buildName(){
                       color: Colors.black38,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
+                  ),
+                ),
+           ),
+        ),
+    ],
+  );
+}
+
+Widget buildBreed(){
+  return Column(
+    children: <Widget>[
+      Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.only(
+                left: 20,
+              ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              // ignore: prefer_const_literals_to_create_immutables
+              boxShadow: [
+                const BoxShadow(
+                  color: Colors.pink,
+                  blurRadius: 4,
+                  offset: Offset(0,2),
+                )
+              ]
+            ),
+            height: 60,
+            child:  TextFormField(
+                  keyboardType: TextInputType.text, 
+                  style: const TextStyle(                   
+                    color: Colors.black,
+                    fontSize: 25
+                  ),
+                  // ignore: prefer_const_constructors
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(bottom:10),
+
+                    border: InputBorder.none,
+                    labelText: 'Ex.: Husky Siberiano',
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    labelStyle: const TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
                   ),
                 ),
            ),
@@ -119,8 +125,8 @@ Widget buildSize(){
             ),
             height: 60,
             child:  TextFormField(
-                  keyboardType: TextInputType.emailAddress, // E ESSE EMAILADRESS PRA TODO LADO?
-                  style: const TextStyle(                   // eh só arrumar
+                  keyboardType: TextInputType.text, 
+                  style: const TextStyle(                   
                     color: Colors.black,
                     fontSize: 25
                   ),
@@ -165,7 +171,7 @@ Widget buildVaccines(){
             ),
             height: 80,
             child: const TextField(
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 23
@@ -256,7 +262,7 @@ Widget buildCEP(){
             ),
             height: 60,
             child: const TextField(
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 23
@@ -296,14 +302,15 @@ class CadastrarPet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[
-            buildPhotoUpload(),
+            UploadPhotoWidget(),
             const SizedBox(
               height: 15,
             ),
             const Text('Nome do pet*',
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -316,7 +323,8 @@ class CadastrarPet extends StatelessWidget {
             const Text('Espécie*',
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -326,10 +334,25 @@ class CadastrarPet extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
+            const Text('Raça*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            buildBreed(),
+            const SizedBox(
+              height: 15,
+            ),
             const Text('Porte*',
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -339,10 +362,25 @@ class CadastrarPet extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
+            const Text('Gênero*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const DropdownButtonGenero(),
+            const SizedBox(
+              height: 15,
+            ),
             const Text('Vacinas*',
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -352,23 +390,11 @@ class CadastrarPet extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            const Text('CEP*',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            buildCEP(),
-            const SizedBox(
-              height: 15,
-            ),
             const Text('Descrição*',
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
@@ -378,20 +404,38 @@ class CadastrarPet extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            UnconstrainedBox(
-                child: Container(
-                  height: 70,
-                  width: 220,
-                  alignment: Alignment.center,
-                  // ignore: prefer_const_constructors
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(233, 0, 84, 1),
-                      borderRadius: const BorderRadius.all(Radius.circular(30))),
+            const SizedBox(
+              height: 15,
+            ),
+            const Text('CEP*',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            buildCEP(),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: UnconstrainedBox(
+                  child: Container(
+                    height: 70,
+                    width: 220,
+                    alignment: Alignment.center,
+                    // ignore: prefer_const_constructors
+                    decoration: BoxDecoration(
+                        color: const Color.fromRGBO(233, 0, 84, 1),
+                        borderRadius: const BorderRadius.all(Radius.circular(30))),
 
-                  child: SizedBox.expand(
-                    child: TextButton(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                    child: SizedBox.expand(
+                      child: TextButton(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
 
                           // ignore: prefer_const_literals_to_create_immutables
                           children: <Widget>[
@@ -409,13 +453,22 @@ class CadastrarPet extends StatelessWidget {
                         if(isCreated) {
                           Get.offNamed(AppRoutes.homePath());
                         } else {
-                          print("vai se lascar");
+                          print("erro");
                         }
                       },
                     ),
                   ),
                 ),
-              )
+              ),
+            const Text('Ao publicar você concorda e aceitar nossos Termos de Uso e Privacidade.',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
           ]
         ),
       ),
