@@ -37,6 +37,7 @@ class AppRoutes {
     GetPage(
       name: _cadastro_pet,
       page: () => const CadastrarPet(),
+      binding: AppBindings()
     ),
   ];
 
