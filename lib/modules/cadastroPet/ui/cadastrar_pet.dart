@@ -1,55 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:idotpet/modules/cadastroPet/ui/upload_images.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/auth/data_provider/user_api.dart';
 import '../../home/ui/navbar.dart';
 import 'caixa_selecao.dart';
 
-Widget buildPhotoUpload() {
-  return GestureDetector(
-    onTap: () {
-      print("Tapped");
-    },
-    child: Container(
-      width: double.infinity,
-      height: 230,
-      color: const Color.fromRGBO(212, 212, 212, 1),
-      alignment: Alignment.center,
-      child: DottedBorder(
-        color: Colors.black,
-        strokeWidth: 1,
-        dashPattern: [8,3],
-        child: Container(
-          width: 380,
-          height: 190,
-          color: const Color.fromRGBO(212, 212, 212, 1),
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Icon(Icons.add_a_photo_outlined,
-                    color: Color.fromRGBO(233, 0, 84, 1),
-                    size: 50),
-              Text("Incluir fotos",
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Color.fromRGBO(233, 0, 84, 1),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text("0 de 6 adicionadas",
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-            ]
-          ),
-        ),
-      ),
-    ),
-  );
-}
 
 Widget buildName(){
   return Column(
@@ -296,7 +255,7 @@ class CadastrarPet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[
-            buildPhotoUpload(),
+            Uphoto(),
             const SizedBox(
               height: 15,
             ),
