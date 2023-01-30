@@ -453,13 +453,14 @@ class CadastrarPet extends StatelessWidget {
                         if(isCreated) {
                           Get.offNamed(AppRoutes.homePath());
                         } else {
-                          print("erro");
+                          print("Erro.");
                         }
                       },
                     ),
                   ),
                 ),
               ),
+            ),
             const Text('Ao publicar você concorda e aceitar nossos Termos de Uso e Privacidade.',
               textAlign: TextAlign.left,
               style: TextStyle(
