@@ -32,13 +32,49 @@ class HomePage extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(top: 16, left: 20),
-            child: const Text(
-              "Procurar Pet",
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
+            child: 
+            // ignore: prefer_const_literals_to_create_immutables
+            Row(children: [
+              const Text(
+                "Procurar Pet",
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.white,
+                ),
               ),
-            ),
+              const SizedBox(width: 150,),
+
+              Container(
+                  height: 80,
+                  width: 80,
+                  // ignore: prefer_const_constructors
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(255,255,139,106),
+                      borderRadius: const BorderRadius.all(
+                      Radius.circular(30)
+                  )
+                  
+                ),
+
+                child: SizedBox.expand(
+                  child: TextButton(
+                      child: 
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          // ignore: prefer_const_literals_to_create_immutables
+                          children: <Widget>[
+                            const Text('+',
+                              style: TextStyle(color: Colors.white,
+                              fontSize: 40,
+                              ),
+                            ),
+                          ]),
+                      onPressed: () => {},
+                ),
+              ),
+              )
+            ],)
+            
           ),
           const Center(
             child: SearchField(),
