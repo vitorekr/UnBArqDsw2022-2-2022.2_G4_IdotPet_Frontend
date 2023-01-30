@@ -26,7 +26,7 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  Future<void> splashProccess() async {
+  void splashProccess() {
     // final splashController = Get.find<SplashController>();
 
     // await splashController.initHive();

@@ -42,7 +42,7 @@ class User {
     return User(
       id: map['id'] as int,
       userType: map['user_type'] as String,
-      image: map['image'] as String,
+      image: null,
       name: map['name'] as String,
       birthday: DateTime.parse(map['birth_day'] as String),
       createdAt: DateTime.parse(map['created_at'] as String),

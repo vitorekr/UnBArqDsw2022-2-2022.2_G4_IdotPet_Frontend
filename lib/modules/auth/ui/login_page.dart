@@ -1,91 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
+import 'package:idotpet/modules/auth/controllers/session_controller.dart';
 import 'package:idotpet/modules/auth/controllers/user_controller.dart';
 import 'package:idotpet/modules/auth/data_provider/user_api.dart';
 
-Widget buildEmail() {
-  return Column(
-    children: <Widget>[
-      Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(
-          left: 20,
-        ),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            // ignore: prefer_const_literals_to_create_immutables
-            boxShadow: [
-              const BoxShadow(
-                color: Color.fromRGBO(109, 111, 200, 1),
-                blurRadius: 4,
-                offset: Offset(0, 4),
-              )
-            ]),
-        height: 60,
-        child: const TextField(
-          keyboardType: TextInputType.emailAddress,
-          style: TextStyle(
-            color: Colors.black38,
-          ),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.only(top: 14),
-            border: InputBorder.none,
-            icon: Icon(Icons.email),
-            labelText: 'Email',
-            labelStyle: TextStyle(
-              color: Colors.black38,
-              fontWeight: FontWeight.w400,
-              fontSize: 20,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
+final _textEmail = TextEditingController();
+final _textPassword = TextEditingController();
+
+class BuildEmail extends StatefulWidget {
+  const BuildEmail({Key? key}) : super(key: key);
+
+  @override
+  BuildEmailState createState() => BuildEmailState();
 }
 
-Widget buildPassword() {
-  return Column(
-    children: <Widget>[
-      Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(
-          left: 20,
-        ),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            // ignore: prefer_const_literals_to_create_immutables
-            boxShadow: [
-              const BoxShadow(
-                color: Color.fromRGBO(109, 111, 200, 1),
-                blurRadius: 4,
-                offset: Offset(0, 4),
-              )
-            ]),
-        height: 60,
-        child: const TextField(
-          obscureText: true,
-          style: TextStyle(
-            color: Colors.black38,
+class BuildEmailState extends State<BuildEmail> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(
+            left: 20,
           ),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.only(top: 14),
-            border: InputBorder.none,
-            icon: Icon(Icons.lock),
-            labelText: 'Senha',
-            labelStyle: TextStyle(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              // ignore: prefer_const_literals_to_create_immutables
+              boxShadow: [
+                const BoxShadow(
+                  color: Color.fromRGBO(109, 111, 200, 1),
+                  blurRadius: 4,
+                  offset: Offset(0, 4),
+                )
+              ]),
+          height: 60,
+          child: TextField(
+            controller: _textEmail,
+            keyboardType: TextInputType.emailAddress,
+            style: const TextStyle(
               color: Colors.black38,
-              fontWeight: FontWeight.w400,
-              fontSize: 20,
+            ),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.only(top: 14),
+              border: InputBorder.none,
+              icon: Icon(Icons.email),
+              labelText: 'Email',
+              labelStyle: TextStyle(
+                color: Colors.black38,
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),
             ),
           ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
+}
+
+class BuildPassword extends StatefulWidget {
+  const BuildPassword({Key? key}) : super(key: key);
+
+  @override
+  BuildPasswordState createState() => BuildPasswordState();
+}
+
+class BuildPasswordState extends State<BuildPassword> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.only(
+            left: 20,
+          ),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              // ignore: prefer_const_literals_to_create_immutables
+              boxShadow: [
+                const BoxShadow(
+                  color: Color.fromRGBO(109, 111, 200, 1),
+                  blurRadius: 4,
+                  offset: Offset(0, 4),
+                )
+              ]),
+          height: 60,
+          child: TextField(
+            controller: _textPassword,
+            obscureText: true,
+            style: const TextStyle(
+              color: Colors.black38,
+            ),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.only(top: 14),
+              border: InputBorder.none,
+              icon: Icon(Icons.lock),
+              labelText: 'Senha',
+              labelStyle: TextStyle(
+                color: Colors.black38,
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class LoginPage extends StatelessWidget {
@@ -94,7 +120,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final userController = Get.find<UserController>;
-    final userApi = UserApi();
+    final userController = Get.find<UserController>();
+    final session = Get.find<SessionController>();
     return Scaffold(
       body: ListView(children: [
         Container(
@@ -102,7 +129,8 @@ class LoginPage extends StatelessWidget {
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/father_dog2.png"), fit: BoxFit.cover),
+                image: AssetImage("assets/images/father_dog2.png"),
+                fit: BoxFit.cover),
           ),
         ),
         Container(
@@ -135,11 +163,11 @@ class LoginPage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            buildEmail(),
+            const BuildEmail(),
             const SizedBox(
               height: 20,
             ),
-            buildPassword(),
+            const BuildPassword(),
             const SizedBox(
               height: 25,
             ),
@@ -155,8 +183,7 @@ class LoginPage extends StatelessWidget {
 
                 child: SizedBox.expand(
                   child: TextButton(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
 
                         // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
@@ -168,7 +195,14 @@ class LoginPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                         ]),
-                    onPressed: () => {},
+                    onPressed: () async {
+                      final loginStatus =
+                          await userController.logIn(_textEmail.text, _textPassword.text);
+                      if (loginStatus) {
+                        session.loadCurrentSession();
+                        Get.offNamed(AppRoutes.homePath());
+                      } else {}
+                    },
                   ),
                 ),
               ),
@@ -201,7 +235,9 @@ class LoginPage extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                         ]),
-                    onPressed: () => {},
+                    onPressed: () {
+                      Get.offNamed(AppRoutes.signupPath());
+                    },
                   ),
                 ),
               ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:idotpet/modules/auth/data_provider/iuser_api.dart';
 import 'package:idotpet/modules/auth/entities/user.dart';
@@ -34,5 +36,35 @@ class UserApi implements IUserApi {
     final user = User.fromMap(json.data);
     //final user = List<User>.from(maps.map((x) => User.fromMap(x)));
     return user;
+  }
+
+  @override
+  Future<bool> userSignUp(String username, String password, String name, String cpf) async {
+    final Dio dio = Dio();
+    var formData = {
+        'name': name,
+        'user_type': 'user',
+        'email': username,
+        'password': password,
+        'birth_day': "1999-03-02",
+        'cpf': cpf,
+    };
+    final jsonEncodeData = jsonEncode(formData);
+    try{
+      final result = await dio.post('http://192.168.0.184:8000/user/', data: jsonEncodeData);
+      if(result.statusCode == 201) {
+      return true;
+    } else {
+      return false;
+    }
+    } on DioError catch(e){
+      print(e.message);
+      print(e.response);
+      print(e.requestOptions);
+      print(e.error);
+      return false;
+    }
+
+    
   }
 }
