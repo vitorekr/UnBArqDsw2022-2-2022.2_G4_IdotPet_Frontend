@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:idotpet/config/app_routes.dart';
 import 'package:idotpet/modules/auth/data_provider/user_api.dart';
 
-Widget buildName(){
+Widget buildGen(what){
   return Column(
     children: <Widget>[
+            const SizedBox(
+              height: 10,
+            ),
       Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.only(
@@ -24,16 +27,17 @@ Widget buildName(){
               ]
             ),
             height: 60,
-            child: const TextField(
+            child: TextField(
                   keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black38,
                   ),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top:14),
+                    contentPadding: const EdgeInsets.only(top:14),
                     border: InputBorder.none,
-                    icon: Icon(Icons.person),
-                    labelText: 'Nome',
+                    icon: const Icon(Icons.person),
+                    labelText: what,
+                    // ignore: prefer_const_constructors
                     labelStyle: TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
@@ -168,20 +172,8 @@ class SignUpPage extends StatelessWidget {
               fontSize:25,
               ),
             ),
-            const Text('Criar conta',
-              style: TextStyle(
-              color: Colors.white,
-              fontSize:25,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            buildName(),
-            const SizedBox(
-              height: 10,
-            ),
             buildEmail(),
+            buildGen('CPF'),
             const SizedBox(
               height: 10,
             ),
